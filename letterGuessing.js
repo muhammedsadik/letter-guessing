@@ -5,37 +5,30 @@ const win = "Congratulations! You win !";
 const turkish = "tr";
 const str = "";
 let entered;
+let counter = 0;
 
-for (let index = 0; index < word.length; index++) {
+while (true) {
+  entered = prompt(`${inputMessage} ${guess}`);
 
-  let status = false;
+  if (entered === null) {
+    break;
+  }
 
-  while (true) {
-    entered = prompt(`${inputMessage} ${guess}`);
+  entered = entered.trim();
 
-    if (entered === null) {
-      status = true;
-      break;
-    }
-  
-    if (entered.trim() === str) {
-      continue;
-    }
+  if (entered === str) {
+    continue;
+  }
 
-    entered = entered.toLocaleLowerCase(turkish);
+  entered = entered.toLocaleLowerCase(turkish);
 
-    if (word.charAt(index) === entered) {
-      guess = guess.slice(0, index) + entered + guess.slice(index + 1);
-      break;
-    }
+  if (word.charAt(counter) === entered) {
+    guess = guess.slice(0, counter) + entered + guess.slice(counter + 1);
+    counter++;
   }
 
   if (word === guess) {
     alert(win);
-    break;
-  }
-
-  if (status) {
     break;
   }
 
